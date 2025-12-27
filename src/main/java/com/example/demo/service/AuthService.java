@@ -1,12 +1,10 @@
-package com.example.healthcare.service;
+package com.example.demo.service;
 
-import com.example.healthcare.dto.AuthRequest;
-import com.example.healthcare.dto.RegisterRequest;
-import com.example.healthcare.entity.AppUser;
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.AuthResponse;
+import com.example.demo.dto.RegisterRequest;
 
 public interface AuthService {
-
-    AppUser register(RegisterRequest request);
-
-    AppUser login(AuthRequest request);
+    AuthResponse register(RegisterRequest request);
+    AuthResponse login(AuthRequest request);
 }
