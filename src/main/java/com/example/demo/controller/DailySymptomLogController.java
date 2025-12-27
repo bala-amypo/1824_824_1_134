@@ -1,28 +1,36 @@
+package com.example.demo.controller;
+
+import com.example.demo.model.DailySymptomLog;
+import com.example.demo.service.DailySymptomLogService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/logs")
+@RequestMapping("/api/symptom-logs")
+@Tag(name = "Daily Symptom Logs")
 public class DailySymptomLogController {
 
-    private final DailySymptomLogService service;
+    private final DailySymptomLogService dailySymptomLogService;
 
-    public DailySymptomLogController(DailySymptomLogService service) {
-        this.service = service;
+    public DailySymptomLogController(DailySymptomLogService dailySymptomLogService) {
+        this.dailySymptomLogService = dailySymptomLogService;
     }
 
     @PostMapping
-    public DailySymptomLog createLog(@RequestBody DailySymptomLog log) {
-        return service.recordLog(log);
+    public ResponseEntity<DailySymptomLog> create(@RequestBody DailySymptomLog log) {
+        return ResponseEntity.ok(dailySymptomLogService.recordSymptomLog(log));
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<DailySymptomLog> update(@PathVariable Long id, @RequestBody DailySymptomLog updated) {
+        return ResponseEntity.ok(dailySymptomLogService.updateSymptomLog(id, updated));
     }
 
     @GetMapping("/patient/{patientId}")
-    public List<DailySymptomLog> getLogsByPatient(@PathVariable Long patientId) {
-        return service.getLogsByPatient(patientId);
-    }
-
-    @GetMapping("/{id}")
-    public DailySymptomLog getLogById(@PathVariable Long id) {
-        return service.getLogById(id);
+    public ResponseEntity<List<DailySymptomLog>> byPatient(@PathVariable Long patientId) {
+        return ResponseEntity.ok(dailySymptomLogService.getLogsByPatient(patientId));
     }
 }
