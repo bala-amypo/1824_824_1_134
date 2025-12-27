@@ -1,8 +1,8 @@
-package com.example.recovery.service.impl;
+package com.example.demo.service.impl;
 
-import com.example.recovery.entity.RecoveryCurveProfile;
-import com.example.recovery.repository.RecoveryCurveProfileRepository;
-import com.example.recovery.service.RecoveryCurveService;
+import com.example.demo.model.RecoveryCurveProfile;
+import com.example.demo.repository.RecoveryCurveProfileRepository;
+import com.example.demo.service.RecoveryCurveService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,8 +17,8 @@ public class RecoveryCurveServiceImpl implements RecoveryCurveService {
     }
 
     @Override
-    public RecoveryCurveProfile createCurveEntry(RecoveryCurveProfile entry) {
-        return repository.save(entry);
+    public RecoveryCurveProfile createCurveEntry(RecoveryCurveProfile curve) {
+        return repository.save(curve);
     }
 
     @Override
