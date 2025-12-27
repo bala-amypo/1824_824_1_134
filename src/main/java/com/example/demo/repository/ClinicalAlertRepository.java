@@ -1,11 +1,10 @@
-package com.example.healthcare.repository;
+package com.example.demo.repository;
 
-import com.example.healthcare.entity.ClinicalAlert;
+import com.example.demo.model.ClinicalAlertRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface ClinicalAlertRepository extends JpaRepository<ClinicalAlert, Long> {
-
-    List<ClinicalAlert> findByPatientId(Long patientId);
+public interface ClinicalAlertRecordRepository extends JpaRepository<ClinicalAlertRecord, Long> {
+    List<ClinicalAlertRecord> findByPatientId(Long patientId);
 }
