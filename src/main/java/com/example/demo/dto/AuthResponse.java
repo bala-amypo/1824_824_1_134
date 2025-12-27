@@ -1,21 +1,18 @@
 package com.example.demo.dto;
 
+import com.example.demo.model.UserRole;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class AuthResponse {
-
     private String token;
-
-    public AuthResponse() {
-    }
-
-    public AuthResponse(String token) {
-        this.token = token;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
+    private String email;
+    private UserRole role;
+    private Long userId;
 }
